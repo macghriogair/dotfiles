@@ -1,0 +1,99 @@
+background no
+update_interval 2.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+own_window_argb_visual yes
+own_window_argb_value 255
+
+minimum_size 300 800
+maximum_width 300
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color white
+default_outline_color white
+default_shade_color white
+alignment top_right
+gap_x 25
+gap_y 42
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+uppercase no
+use_spacer none
+cpu_avg_samples 2
+override_utf8_locale no
+
+use_xft yes
+xftfont Fira Code:size=10
+xftalpha 0.1
+
+color0 white
+color1 e2e2e2
+#color1 darkblue
+color2 gray
+color3 c96a1c
+
+
+TEXT
+# SYSTEM
+#######################################################
+$color3${font Fira Code:bold:size=11}SYSTEM ${hr 2}
+########Fira Code########################################
+$color1${font Fira Code:normal:size=10}$sysname $kernel $alignr $machine
+Host $alignr$nodename
+Uptime $alignr$uptime
+File System $alignr${fs_type}
+
+# CPU
+#######################################################
+$color3${font Fira Code:bold:size=11}PROCESSORS ${hr 2}
+#######################################################
+$color1${font Fira Code:normal:size=10}${cpugraph cpu0}
+${color1}CPU ${color1}${alignr}${cpu cpu0}%
+${cpubar cpu0 5,}
+${top name 1} $alignr ${top cpu 1}%
+${top name 2} $alignr ${top cpu 2}%
+${top name 3} $alignr ${top cpu 3}%
+${top name 4} $alignr ${top cpu 4}%
+${top name 5} $alignr ${top cpu 5}%
+
+# MEMORY
+#######################################################
+$color3${font Fira Code:bold:size=11}MEMORY ${hr 2}
+#######################################################
+$color1${font Fira Code:normal:size=10}RAM ${alignr}${mem}
+${membar 5,}${top_mem name 1} $alignr ${top_mem mem_res 1}
+${top_mem name 2} $alignr ${top_mem mem_res 2}
+${top_mem name 3} $alignr ${top_mem mem_res 3}
+${top_mem name 4} $alignr ${top_mem mem_res 4}
+${top_mem name 5} $alignr ${top_mem mem_res 5}
+
+# NETWORK
+#######################################################
+$color3${font Fira Code:bold:size=11}NETWORK ${hr 2}
+#######################################################
+$color1${font Fira Code:normal:size=10}ESSID $alignr ${wireless_essid wlan1}
+Local $alignr ${addr wlan1}
+#Public ${alignr}${execi 3600 wget -q -O /dev/stdout http://checkip.dyndns.org/ | cut -d : -f 2- | cut -d \< -f -1}
+Connection quality $alignr ${wireless_link_qual_perc wlan1}%
+${downspeedgraph wlan1}
+DLS:${downspeed wlan1} kb/s $alignr total: ${totaldown wlan1}
+${upspeedgraph wlan1}
+ULS:${upspeed wlan1} kb/s $alignr total: ${totalup wlan1}
+
+# DISKS
+#######################################################
+$color3${font Fira Code:bold:size=11}DISKS ${hr 2}
+#######################################################
+$color1${font Fira Code:normal:size=10}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${fs_bar /}
+SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
+${swapbar}

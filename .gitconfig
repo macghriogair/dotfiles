@@ -1,0 +1,27 @@
+[color]
+	ui = auto
+[user]
+	name = Patrick Mac Gregor
+	email = macgregor.porta@gmail.com
+[apply]
+	whitespace = nowarn
+[core]
+	editor = nano
+	autocrlf = input
+	whitespace = fix,trailing-space,space-before-tab,-indent-with-non-tab
+	filemode = false
+[commit]
+	template = ~/.gitmessage.txt
+[alias]
+	co = checkout
+        ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+        sgraph = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'
+[diff "word"]
+	textconv = textract
+[diff "odf"]
+      textconv=odt2txt
