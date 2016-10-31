@@ -97,3 +97,10 @@ $color1${font Fira Code:normal:size=10}/ $alignc ${fs_used /} / ${fs_size /} $al
 ${fs_bar /}
 SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
 ${swapbar}
+
+# DOCKER
+$color3${font Fira Code:bold:size=11}DOCKER ${hr 2}
+${font conkycolors:size=11}${font}${goto 6}Containers: ${alignr}${color2}${execi 30 docker ps -a | awk 'NR <= 1 {next} {print $1}' | wc -l} (${execi 30 docker ps | awk 'NR <= 1 {next} {print $1}' | wc -l} running)${color}
+${stippled_hr 1}
+${font Fira Code:normal:size=10}${execi 30 docker ps | awk 'NR <=1 {next} {print $2}' | sort | uniq -c | awk '{printf(" %-3u\t\t%s\n", $1, $2)}'} 
+#
