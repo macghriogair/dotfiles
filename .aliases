@@ -3,6 +3,7 @@ alias apt-get="sudo apt-get"
 alias apt="sudo apt"
 alias aptitude="sudo aptitude"
 
+alias ll='ls -alh'
 alias subl="/usr/local/bin/subl"
 alias ..='cd ..'
 alias c='clear'
@@ -16,7 +17,7 @@ alias cat-log='sudo cat /var/log/messages'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
-alias rm='rm -I --preserve-root'
+alias rm='rm -i'
 
 ## pass options to free ##
 alias meminfo='free -m -l -t'

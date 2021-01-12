@@ -1,0 +1,5 @@
+*~
+.DS_Store
+pc4-legacy/website/var/version
+
+.php_cs.cache

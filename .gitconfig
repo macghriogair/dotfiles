@@ -2,7 +2,8 @@
 	ui = auto
 [user]
 	name = Patrick Mac Gregor
-	email = macgregor.porta@gmail.com
+	email = patrick.macgregor@basilicom.de
+
 [apply]
 	whitespace = nowarn
 [core]
@@ -10,6 +11,8 @@
 	autocrlf = input
 	whitespace = fix,trailing-space,space-before-tab,-indent-with-non-tab
 	filemode = false
+	excludesfile = /Users/pmacgregor/.gitignore_global
+	ignorecase = false
 [commit]
 	template = ~/.gitmessage.txt
 [alias]
@@ -21,7 +24,18 @@
 	type = cat-file -t
 	dump = cat-file -p
         sgraph = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'
+
+	
+    	changelog = "!_() { t=$(git describe --abbrev=0 --tags); git log ${t}..HEAD --no-merges --pretty=format:'* %s'; }; _"
 [diff "word"]
 	textconv = textract
 [diff "odf"]
       textconv=odt2txt
+[difftool "sourcetree"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = upstream
