@@ -3,7 +3,7 @@ alias apt-get="sudo apt-get"
 alias apt="sudo apt"
 alias aptitude="sudo aptitude"
 
-alias subl="sublime"
+alias subl="/usr/local/bin/subl"
 alias ..='cd ..'
 alias c='clear'
 alias mount='mount |column -t'
@@ -28,7 +28,18 @@ alias fix-spaces="rename 's/ /-/g'"
 alias fix-upper="rename 'y/A-Z/a-z/'"
 
 alias vm='vagrant ssh'
-alias dev='cd ~/dev && ls -la'
+alias dev='cd ~/Code && ls -la'
 alias keyrn="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1"
 
 alias art='php artisan'
+
+alias pimbash='docker-compose exec --user=www-data php-fpm bash'
+alias composer-da='composer dump-autoload'
+
+alias nah='git reset --hard && git clean -df'
+
+alias python='/usr/local/bin/python3'
+
+
+alias art='php artisan'
+alias artisan='php artisan'

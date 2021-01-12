@@ -1,22 +1,23 @@
-. ~/z.sh
+skip_global_compinit=1
+
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.composer/vendor/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/mac/.oh-my-zsh
-
-export PATH=~/.composer/vendor/bin:$PATH
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
-
+export ZSH=/Users/pmacgregor/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="refined"
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="macghriogair"
+ZSH_THEME="robbyrussell"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -60,8 +61,15 @@ ZSH_THEME="macghriogair"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow vagrant laravel5 common-aliases Composer zsh-nvm)
+plugins=(
+  brew
+  git
+  gitflow
+  osx
+  dirhistory
+)
 
+source ~/sandboxd
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -94,6 +102,38 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source $HOME/.aliases
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=${PATH}:/usr/local/mysql/bin
+export PATH="${PATH}:$HOME/.composer/vendor/bin/"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="{$PATH}:vendor/bin/"
+export COMPOSER_MEMORY_LIMIT=-1
+export PATH="$PATH:$HOME/.local/bin"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Users/pmacgregor/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 1 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/pmacgregor/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/pmacgregor/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/pmacgregor/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+if [ -f ~/.scripts ]; then
+    . ~/.scripts
+fi
+
+if [ -f ~/.aliases_local ]; then
+    . ~/.aliases_local
+fi

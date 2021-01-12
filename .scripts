@@ -1,0 +1,17 @@
+use_bas_bitbucket() {
+  ssh-add ~/.ssh/id_rsa
+}
+
+use_my_bitbucket() {
+  ssh-add ~/.ssh/my_bitbucket
+}
+
+use_java_8() {
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
+}
+
+start_draw() {
+  docker run -p 8087:80 -d jonberenguer/draw.io
+  sleep 1
+  open http://localhost:8087/draw.io/war/index.html?offline=1
+}
