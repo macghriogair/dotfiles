@@ -137,3 +137,5 @@ fi
 if [ -f ~/.aliases_local ]; then
     . ~/.aliases_local
 fi
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"

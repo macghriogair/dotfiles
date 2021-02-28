@@ -1,8 +1,10 @@
 use_bas_bitbucket() {
+  ssh-add -D
   ssh-add ~/.ssh/id_rsa
 }
 
 use_my_bitbucket() {
+  ssh-add -D
   ssh-add ~/.ssh/my_bitbucket
 }
 
